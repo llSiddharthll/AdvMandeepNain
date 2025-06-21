@@ -20,7 +20,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 w-full px-6 py-4 bg-[var(--primary)]/80 backdrop-blur-md shadow-lg z-50">
+    <header className="sticky top-0 w-full px-6 py-4 bg-[var(--secondary)]/80 backdrop-blur-md shadow-lg z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <motion.div
@@ -42,7 +42,7 @@ const Header = () => {
             <motion.a
               key={link.href}
               href={link.href}
-              className="relative text-[var(--background)] text-base font-['Poppins'] font-medium hover:text-[var(--accent)] transition-colors duration-300"
+              className="relative text-[var(--text)] text-base font-['Poppins'] font-medium hover:text-[var(--accent)] transition-colors duration-300"
               whileHover={{ scale: 1.05 }}
             >
               {link.label}
