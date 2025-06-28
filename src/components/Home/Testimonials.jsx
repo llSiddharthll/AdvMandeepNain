@@ -1,99 +1,175 @@
 import "../../assets/testimonials.css";
 import { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 export default function Testimonials() {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const activeIndexRef = useRef(0);
+
+    const imageContainerRef = useRef(null);
+    const nameRef = useRef(null);
+    const designationRef = useRef(null);
+    const quoteRef = useRef(null);
+
     const testimonials = [
         {
             quote: "Mandeep Nain & Associates simplified my tax filings with expert guidance and timely support. Highly recommended!",
             name: "Priya Gupta",
             designation: "Small Business Owner",
-            src: "https://images.unsplash.com/photo-1512316609839-ce289d3eba0a?q=80&w=1368&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            src: "https://images.unsplash.com/photo-1512316609839-ce289d3eba0a?q=80&w=1368&auto=format&fit=crop",
         },
         {
             quote: "Their GST compliance services were seamless and saved me from penalties. Exceptional team!",
             name: "Amit Sharma",
             designation: "Freelancer",
-            src: "https://images.unsplash.com/photo-1628749528992-f5702133b686?q=80&w=1368&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D",
+            src: "https://images.unsplash.com/photo-1628749528992-f5702133b686?q=80&w=1368&auto=format&fit=crop",
         },
         {
             quote: "The personalized tax consultancy from Mandeep Nain & Associates exceeded my expectations. A true professional service!",
             name: "Sonali Bansal",
             designation: "Business Consultant",
-            src: "https://images.unsplash.com/photo-1524267213992-b76e8577d046?q=80&w=1368&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D",
+            src: "https://images.unsplash.com/photo-1524267213992-b76e8577d046?q=80&w=1368&auto=format&fit=crop",
         },
     ];
 
-    const [activeIndex, setActiveIndex] = useState(0);
-    const imageContainerRef = useRef(null);
-    const autoplayIntervalRef = useRef(null);
+    const calculateGap = (width) => {
+        const minWidth = 1024;
+        const maxWidth = 1456;
+        const minGap = 60;
+        const maxGap = 86;
 
-    const updateTestimonial = (direction) => {
-        setActiveIndex((prev) => (prev + direction + testimonials.length) % testimonials.length);
+        if (width <= minWidth) return minGap;
+        if (width >= maxWidth) return Math.max(minGap, maxGap + 0.06018 * (width - maxWidth));
+        return minGap + (maxGap - minGap) * ((width - minWidth) / (maxWidth - minWidth));
     };
 
-    const animateWords = (quoteElement) => {
-        const words = quoteElement.querySelectorAll('.word');
-        words.forEach((word, index) => {
-            word.style.transition = 'none';
-            word.style.opacity = '0';
-            word.style.transform = 'translateY(10px)';
-            word.style.filter = 'blur(10px)';
-            requestAnimationFrame(() => {
-                word.style.transition = 'opacity 0.2s ease-in-out, transform 0.2s ease-in-out, filter 0.2s ease-in-out';
-                word.style.opacity = '1';
-                word.style.transform = 'translateY(0)';
-                word.style.filter = 'blur(0)';
+    const updateTestimonial = (directionOrIndex) => {
+        let newIndex;
+
+        if (directionOrIndex === 1 || directionOrIndex === -1) {
+            newIndex = (activeIndexRef.current + directionOrIndex + testimonials.length) % testimonials.length;
+        } else {
+            newIndex = directionOrIndex;
+        }
+
+        const containerWidth = imageContainerRef.current.offsetWidth;
+        const gap = calculateGap(containerWidth);
+        const maxStickUp = gap * 0.8;
+
+        const images = imageContainerRef.current.querySelectorAll(".testimonial-image");
+
+        images.forEach((img, index) => {
+            const offset = (index - newIndex + testimonials.length) % testimonials.length;
+            const zIndex = testimonials.length - Math.abs(offset);
+            const scale = index === newIndex ? 1 : 0.85;
+
+            let translateX, translateY, rotateY;
+            if (offset === 0) {
+                translateX = "0%";
+                translateY = "0%";
+                rotateY = 0;
+            } else if (offset === 1 || offset === -2) {
+                translateX = "20%";
+                translateY = `-${(maxStickUp / img.offsetHeight) * 100}%`;
+                rotateY = -15;
+            } else {
+                translateX = "-20%";
+                translateY = `-${(maxStickUp / img.offsetHeight) * 100}%`;
+                rotateY = 15;
+            }
+
+            gsap.to(img, {
+                zIndex,
+                scale,
+                x: translateX,
+                y: translateY,
+                rotateY,
+                duration: 0.8,
+                ease: "power3.out",
             });
         });
+
+        // Animate text
+        gsap.to([nameRef.current, designationRef.current], {
+            opacity: 0,
+            y: -20,
+            duration: 0.3,
+            ease: "power2.in",
+            onComplete: () => {
+                nameRef.current.textContent = testimonials[newIndex].name;
+                designationRef.current.textContent = testimonials[newIndex].designation;
+                gsap.to([nameRef.current, designationRef.current], {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.3,
+                    ease: "power2.out",
+                });
+            },
+        });
+
+        gsap.to(quoteRef.current, {
+            opacity: 0,
+            y: -20,
+            duration: 0.3,
+            ease: "power2.in",
+            onComplete: () => {
+                quoteRef.current.innerHTML = testimonials[newIndex].quote
+                    .split(" ")
+                    .map((word) => `<span class="word">${word}</span>`)
+                    .join(" ");
+                gsap.to(quoteRef.current, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.3,
+                    ease: "power2.out",
+                });
+                gsap.from(".word", {
+                    opacity: 0,
+                    y: 10,
+                    stagger: 0.02,
+                    duration: 0.2,
+                    ease: "power2.out",
+                });
+            },
+        });
+
+        setActiveIndex(newIndex);
+        activeIndexRef.current = newIndex;
     };
 
     useEffect(() => {
-        const currentTestimonial = testimonials[activeIndex];
-        const quoteElement = imageContainerRef.current.querySelector('#quote');
-        if (quoteElement) {
-            quoteElement.innerHTML = currentTestimonial.quote
-                .split(' ')
-                .map((word) => `<span class="word">${word}</span>`)
-                .join(' ');
-            animateWords(quoteElement);
-        }
+        updateTestimonial(0);
+        quoteRef.current.innerHTML = testimonials[0].quote
+            .split(" ")
+            .map(word => `<span class="word">${word}</span>`)
+            .join(" ");
 
-        const images = imageContainerRef.current.querySelectorAll('.testimonial-image');
-        images.forEach((img, index) => {
-            const offset = index - activeIndex;
-            const absOffset = Math.abs(offset);
-            const zIndex = testimonials.length - absOffset;
-            const opacity = index === activeIndex ? 1 : 0.7;
-            const scale = 1 - (absOffset * 0.15);
-            const translateY = offset === -1 ? '-20%' : offset === 1 ? '20%' : '0%';
-            const rotateY = offset === -1 ? '15deg' : offset === 1 ? '-15deg' : '0deg';
 
-            img.style.zIndex = zIndex;
-            img.style.opacity = opacity;
-            img.style.transform = `translateY(${translateY}) scale(${scale}) rotateY(${rotateY})`;
-        });
+        const autoplayInterval = setInterval(() => {
+            const nextIndex = (activeIndexRef.current + 1) % testimonials.length;
+            updateTestimonial(nextIndex);
+        }, 5000);
 
-        // Autoplay setup
-        autoplayIntervalRef.current = setInterval(() => updateTestimonial(1), 5000);
+        const handleResize = () => updateTestimonial(activeIndexRef.current);
+        window.addEventListener("resize", handleResize);
 
-        // Cleanup
         return () => {
-            if (autoplayIntervalRef.current) {
-                clearInterval(autoplayIntervalRef.current);
-            }
+            clearInterval(autoplayInterval);
+            window.removeEventListener("resize", handleResize);
         };
-    }, [activeIndex, testimonials]);
+    }, []);
 
     return (
-        <section className="testimonial ">
+        <section className="testimonial">
             <div className="testimonial-container">
-                <div className="testimonial-grid" ref={imageContainerRef}>
-                    <div className="image-container">
+
+                <div className="testimonial-grid">
+                    <div className="image-container" ref={imageContainerRef}>
                         {testimonials.map((testimonial, index) => (
                             <img
                                 key={index}
                                 src={testimonial.src}
-                                alt={testimonial.name}
+                                alt={`Testimonial from ${testimonial.name}`}
                                 className="testimonial-image"
                                 data-index={index}
                             />
@@ -101,14 +177,17 @@ export default function Testimonials() {
                     </div>
                     <div className="testimonial-content">
                         <div>
-                            <h3 className="name" id="name">{testimonials[activeIndex].name}</h3>
-                            <p className="designation" id="designation">{testimonials[activeIndex].designation}</p>
-                            <p className="quote" id="quote"></p>
+                            <h3 className="name" ref={nameRef}>
+                                {testimonials[0].name}
+                            </h3>
+                            <p className="designation" ref={designationRef}>
+                                {testimonials[0].designation}
+                            </p>
+                            <p className="quote" ref={quoteRef}></p>
                         </div>
                         <div className="arrow-buttons">
                             <button
                                 className="arrow-button prev-button"
-                                id="prev-button"
                                 onClick={() => updateTestimonial(-1)}
                                 aria-label="Previous testimonial"
                             >
@@ -118,7 +197,6 @@ export default function Testimonials() {
                             </button>
                             <button
                                 className="arrow-button next-button"
-                                id="next-button"
                                 onClick={() => updateTestimonial(1)}
                                 aria-label="Next testimonial"
                             >
@@ -131,6 +209,5 @@ export default function Testimonials() {
                 </div>
             </div>
         </section>
-
     );
 }

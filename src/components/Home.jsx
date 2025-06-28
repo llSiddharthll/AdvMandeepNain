@@ -2,6 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Testimonials from './Home/Testimonials';
 import Services from './Home/Services';
+import Hero from './Home/Hero';
+import { FaCalculator, FaFileAlt, FaRegQuestionCircle, FaPhone } from 'react-icons/fa';
+import Cta from './Cta';
 
 // Fallback image function
 const fallbackImage = 'https://via.placeholder.com/600x400?text=Image+Not+Available';
@@ -46,16 +49,17 @@ const Home = () => {
   ];
 
   const quickLinks = [
-    { href: '#resources', label: 'Tax Calculators' },
-    { href: '#resources', label: 'GST Guides' },
-    { href: '#blog', label: 'Latest Tax Updates' },
-    { href: '#contact', label: 'Get in Touch' },
+    { label: 'Our Services', href: '/services', icon: <FaFileAlt className="w-6 h-6 mx-auto mb-2" /> },
+    { label: 'GST Compliance', href: '/gst-compliance', icon: <FaCalculator className="w-6 h-6 mx-auto mb-2" /> },
+    { label: 'Resources', href: '/resources', icon: <FaRegQuestionCircle className="w-6 h-6 mx-auto mb-2" /> },
+    { label: 'Contact Us', href: '/contact', icon: <FaPhone className="w-6 h-6 mx-auto mb-2" /> },
   ];
+
 
   return (
     <main className="bg-[var(--background)] text-[var(--text)] min-h-screen font-['Roboto']">
       {/* Hero Section */}
-      <section className="relative h-screen bg-[url(https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200)] bg-cover bg-center">
+      {/* <section className="relative h-screen bg-[url(https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200)] bg-cover bg-center">
         <div className="absolute inset-0 bg-gradient-to-b from-[var(--text)]/20 to-[var(--text)]/80"></div>
         <div className="relative z-10 backdrop-blur-sm flex h-full items-center justify-center text-center px-4 py-16">
           <motion.div
@@ -99,7 +103,9 @@ const Home = () => {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
+      <Hero />
+
 
       {/* Why Choose Us Section */}
       <section className="max-w-7xl mx-auto py-16 px-6 bg-[var(--background)]">
@@ -131,55 +137,23 @@ const Home = () => {
       </section>
 
       {/* Services Overview */}
-      {/* <section className="max-w-7xl mx-auto py-16 px-6 bg-[var(--secondary)]/5">
-        <motion.h2
-          className="text-3xl font-bold text-center text-[var(--text)] mb-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          Our Services
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              className="relative bg-white/10 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-[var(--secondary)]/20 overflow-hidden"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <img
-                src={service.image}
-                alt={`${service.title} illustration`}
-                className="w-full h-48 object-cover rounded-lg mb-4 transition-transform duration-300 hover:scale-105"
-                onError={(e) => { e.target.src = fallbackImage; }}
-              />
-              <div className="text-4xl mb-4 text-[var(--accent)]">{service.icon}</div>
-              <h3 className="text-xl font-semibold text-[var(--text)] mb-3">{service.title}</h3>
-              <p className="text-base text-[var(--text)]/80 leading-relaxed">{service.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section> */}
-      <Services/>
+
+      <Services />
 
       {/* About Summary */}
       <section className="max-w-7xl mx-auto py-16 px-6 bg-[var(--secondary)]/10">
         <div className="flex flex-col md:flex-row items-center gap-10">
           <motion.div
-            className="w-full md:w-1/2 h-64 md:h-80 rounded-xl overflow-hidden shadow-lg"
+            className="w-full md:w-1/2 rounded-xl overflow-hidden"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
             <img
-              src="https://images.pexels.com/photos/3184293/pexels-photo-3184293.jpeg?auto=compress&cs=tinysrgb&w=600"
+              src="/about.png"
               alt="Professional tax consultancy team"
-              className="w-full h-full object-cover"
+              className="w-full h-full"
               onError={(e) => { e.target.src = fallbackImage; }}
             />
           </motion.div>
@@ -202,22 +176,22 @@ const Home = () => {
       </section>
 
       {/* Testimonials Section */}
-      
+
       <motion.h2
-          className="text-3xl font-bold text-center text-[var(--text)] mt-10"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          What Our Clients Say
-        </motion.h2>
-      <Testimonials/>
+        className="text-3xl font-bold text-center text-[var(--text)] mt-10"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        What Our Clients Say
+      </motion.h2>
+      <Testimonials />
 
       {/* Quick Links Section */}
-      <section className="max-w-7xl mx-auto py-16 px-6 bg-[var(--secondary)]/5">
+      <section className="max-w-7xl mx-auto py-16 px-6 bg-gray-100">
         <motion.h2
-          className="text-3xl font-bold text-center text-[var(--text)] mb-12"
+          className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -230,20 +204,20 @@ const Home = () => {
             <motion.a
               key={index}
               href={link.href}
-              className="bg-[var(--primary)] text-white p-4 rounded-lg text-center text-base font-semibold hover:bg-[var(--accent)] transition-colors duration-300 shadow-md hover:shadow-lg"
+              className="group bg-white text-gray-900 p-6 rounded-xl text-center font-semibold hover:bg-[var(--secondary)]/50 transition-colors duration-300 shadow-md hover:shadow-xl flex flex-col items-center justify-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
               viewport={{ once: true }}
             >
-              {link.label}
+              <span className="text-[var(--accent)] group-hover:text-[var(--primary)] transition-colors duration-300">{link.icon}</span>
+              <span className="mt-2">{link.label}</span>
             </motion.a>
           ))}
         </div>
       </section>
-
       {/* Final CTA Section */}
-      <section className="bg-[var(--primary)] py-16 px-6 text-center">
+      {/* <section className="bg-[var(--primary)] py-16 px-6 text-center">
         <motion.div
           className="max-w-3xl mx-auto"
           initial={{ opacity: 0 }}
@@ -264,7 +238,8 @@ const Home = () => {
             Get Started Now
           </motion.a>
         </motion.div>
-      </section>
+      </section> */}
+      <Cta/>
     </main>
   );
 };

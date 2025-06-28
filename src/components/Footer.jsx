@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaFacebook, FaXTwitter, FaLinkedin } from 'react-icons/fa6';
+import { FaArrowRight } from 'react-icons/fa';
 
 const Footer = () => {
     const navLinks = [
@@ -34,7 +35,7 @@ const Footer = () => {
                     >
                         <div className="flex justify-center md:justify-start mb-6">
                             <img
-                                src="/logo_light.jpg"
+                                src="/logo_light.jpeg"
                                 alt="Mandeep Nain & Associates Logo"
                                 className="h-14 w-14 rounded-lg object-cover border-2 border-[var(--accent)]"
                             />
@@ -74,7 +75,7 @@ const Footer = () => {
                         viewport={{ once: true }}
                     >
                         <p className="text-sm font-['Poppins'] font-semibold mb-2 text-[var(--accent)]">Get in Touch</p>
-                        <p className="text-sm font-['Poppins'] text-[var(--background)] mb-2">Email: info@mandeepnain.com</p>
+                        <p className="text-sm font-['Poppins'] text-[var(--background)] mb-2">Email: advmandeepnain@gmail.com</p>
                         <p className="text-sm font-['Poppins'] text-[var(--background)] mb-4">Phone: +91-98765-43210</p>
                         <div className="flex justify-center md:justify-end gap-4">
                             {socialLinks.map((social) => (
@@ -90,12 +91,14 @@ const Footer = () => {
                                 </motion.a>
                             ))}
                         </div>
-                        <div className="mt-4">
+                        <div className="mt-4 flex gap-2 items-center ">
                             <input
                                 type="email"
                                 placeholder="Subscribe to Newsletter"
-                                className="w-full p-2 rounded-lg text-[var(--background)] bg-white focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+                                className="w-full p-2 rounded-lg text-[var(--background)] bg-white/10 focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
                             />
+                            <span className='h-10 w-12 flex items-center justify-center rounded-lg text-[var(--background)] bg-white/10 focus:outline-none focus:ring-2 focus:ring-[var(--accent)]'><FaArrowRight className='text-2xl '/></span>
+                            
                         </div>
                     </motion.div>
                 </div>
@@ -104,14 +107,14 @@ const Footer = () => {
                 <div className="mt-10 text-center border-t border-[var(--primary)]/20 pt-6">
                     <p className="text-xs font-['Poppins'] text-[var(--background)]">
                         <motion.a
-                            href="/privacy"
+                            href="/privacy-policy"
                             className="hover:text-[var(--accent)] transition-colors duration-300"
                             whileHover={{ underline: 'true', color: 'var(--accent)' }}
                         >
                             Privacy Policy
                         </motion.a>{' | '}
                         <motion.a
-                            href="/terms"
+                            href="/terms-and-conditions"
                             className="hover:text-[var(--accent)] transition-colors duration-300"
                             whileHover={{ underline: 'true', color: 'var(--accent)' }}
                         >
@@ -119,6 +122,9 @@ const Footer = () => {
                         </motion.a>
                     </p>
                     <p className="text-xs mt-2 font-['Poppins'] text-[var(--background)]">© 2025 Mandeep Nain & Associates. All rights reserved.</p>
+                    <p className="text-xs mt-2 font-['Poppins'] text-[var(--background)]">
+                        Powered by Siddharth Tiwari :)
+                    </p>
                 </div>
             </div>
         </footer>

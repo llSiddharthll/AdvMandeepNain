@@ -19,7 +19,7 @@
 
 .testimonial-grid {
     display: grid;
-    gap: 5rem;
+    gap: 10rem;
 }
 
 .image-container {
