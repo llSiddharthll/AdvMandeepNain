@@ -33,3 +33,17 @@ button {
 html {
   font-size: 100%;
 }
+
+.loader {
+  animation: logo 1s ease-in-out infinite alternate;
+}
+
+@keyframes logo {
+  0% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+}
+
