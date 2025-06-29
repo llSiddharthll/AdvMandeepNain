@@ -33,7 +33,7 @@ export default function Cta() {
                 Expert GST and income tax solutions to ensure compliance and drive your business forward. Start today!
               </motion.p>
             </div>
-            <div className="relative flex items-center justify-end">
+            <div className="relative flex items-center justify-center md:justify-end">
               <motion.a
                 href="/contact"
                 className="flex items-center gap-2 py-4 px-6 bg-white text-[var(--primary)] rounded-lg font-semibold text-lg shadow-md hover:bg-[var(--background)] hover:text-[var(--accent)] transition-colors duration-300"
