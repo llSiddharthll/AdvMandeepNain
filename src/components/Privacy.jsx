@@ -38,7 +38,7 @@ export default function Privacy() {
                 <h3 class="text-xl font-semibold mt-8 mb-2 text-[var(--text)]/80">6. Contact Information</h3>
                 <p class="mb-1"><strong>Office:</strong> SCO-45, Cabin No. 20, 2nd Floor, Sector-11, Panchkula, Haryana, PIN: 134109</p>
                 <p class="mb-1"><strong>Email:</strong> advmandeepnain@gmail.com</p>
-                <p class="mb-4"><strong>Phone:</strong> +91-98765-43210</p>
+                <p class="mb-4"><strong>Phone:</strong> +91 97296 30697</p>
 
                 <p class="text-sm text-[var(--text)]">
                     This policy was last updated on <span class="font-semibold">01/01/2024</span>. By using our services, you agree to this Privacy Policy.

@@ -46,7 +46,7 @@ export default function Terms() {
                 <p class="mb-1"><strong>Firm Name:</strong> Mandeep Nain & Associates</p>
                 <p class="mb-1"><strong>Office:</strong> SCO-45, Cabin No. 20, 2nd Floor, Sector-11, Panchkula, Haryana, 134109</p>
                 <p class="mb-1"><strong>Email:</strong> advmandeepnain@gmail.com</p>
-                <p class="mb-4"><strong>Phone:</strong> +91-98765-43210</p>
+                <p class="mb-4"><strong>Phone:</strong> +91 97296 30697</p>
 
                 <p class="text-sm text-[var(--text)]">
                     Last updated on <span class="font-semibold">01/01/2024</span>. Your continued use of our services implies acceptance of these Terms.

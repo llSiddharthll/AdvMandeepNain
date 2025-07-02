@@ -52,7 +52,7 @@ export default function Header2() {
         <div className="hidden lg:flex flex-col w-full">
           <div className="flex justify-between items-center px-4 md:px-8 py-2 bg-[var(--text)] text-white text-sm">
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6 text-xs md:text-sm">
-              <span>+91-98765-43210</span>
+              <span>+91 97296 30697</span>
               <span>advmandeepnain@gmail.com</span>
             </div>
             <div className="flex gap-4 items-center justify-end">
@@ -104,7 +104,7 @@ export default function Header2() {
         </div>
         <div className="flex flex-col justify-start items-start lg:justify-between lg:items-center gap-4 lg:gap-0 px-4 lg:px-8 py-2 bg-[var(--text)] text-white text-sm">
           <div className="flex flex-col lg:flex-row items-start lg:items-center gap-1 lg:gap-6 text-xs lg:text-sm">
-            <span>+91-98765-43210</span>
+            <span>+91 97296 30697</span>
             <span>advmandeepnain@gmail.com</span>
           </div>
           <div className="flex gap-4 items-center justify-end">
