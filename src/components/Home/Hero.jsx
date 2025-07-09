@@ -83,7 +83,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className=" text-center mt-12 mb-20">
+      <div className="relative text-center mt-12 mb-20 z-10">
         <Link to="/contact" className="cursor-pointer text-[var(--primary)] bg-[var(--secondary)]/30 px-8 py-3 rounded-full text-lg font-medium shadow-lg">
           Book a Consultation
         </Link>

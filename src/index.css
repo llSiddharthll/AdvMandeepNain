@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 @import "tailwindcss";
 
@@ -11,10 +10,16 @@
   --accent: #68d9d6;
 }
 
+@theme {
+  --color-text: #070808;
+  --color-background: #f8fafa;
+  --color-primary: #68b0ae;
+  --color-secondary: #a1dcda;
+  --color-accent: #68d9d6;
+}
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 h1,
@@ -26,8 +31,7 @@ p,
 span,
 a,
 button {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 html {
@@ -46,4 +50,3 @@ html {
     transform: translateY(20px);
   }
 }
-

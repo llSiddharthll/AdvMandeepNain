@@ -12,6 +12,7 @@ import Contact from './components/Contact';
 import Privacy from './components/Privacy';
 import Terms from './components/Terms';
 import Loader from './components/Loader';
+import Calculators from './components/Calculators';
 
 
 
@@ -39,6 +40,7 @@ function PageWrapper() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/services" element={<Services />} />
         <Route path="/gst-compliance" element={<GSTCompliance />} />
+        <Route path="/calculators" element={<Calculators />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy-policy" element={<Privacy />} />

@@ -51,7 +51,7 @@ const Home = () => {
   const quickLinks = [
     { label: 'Our Services', href: '/services', icon: <FaFileAlt className="w-6 h-6 mx-auto mb-2" /> },
     { label: 'GST Compliance', href: '/gst-compliance', icon: <FaCalculator className="w-6 h-6 mx-auto mb-2" /> },
-    { label: 'Resources', href: '/resources', icon: <FaRegQuestionCircle className="w-6 h-6 mx-auto mb-2" /> },
+    { label: 'Calculators', href: '/calculators', icon: <FaCalculator className="w-6 h-6 mx-auto mb-2" /> },
     { label: 'Contact Us', href: '/contact', icon: <FaPhone className="w-6 h-6 mx-auto mb-2" /> },
   ];
 
