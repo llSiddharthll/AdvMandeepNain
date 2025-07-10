@@ -10,37 +10,7 @@ import Cta from './Cta';
 const fallbackImage = 'https://via.placeholder.com/600x400?text=Image+Not+Available';
 
 const Home = () => {
-  const services = [
-    {
-      title: 'Income Tax Services',
-      description: 'Expert e-filing, TDS returns, tax planning, and HRA claim assistance for individuals and businesses.',
-      icon: '📊',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600',
-    },
-    {
-      title: 'GST Services',
-      description: 'Seamless GST registration, return filing, input tax credit claims, and e-way bill compliance.',
-      icon: '🧾',
-      image: 'https://images.pexels.com/photos/3184419/pexels-photo-3184419.jpeg?auto=compress&cs=tinysrgb&w=600',
-    },
-    {
-      title: 'Consultancy Services',
-      description: 'Tailored tax audit support, composition scheme advice, and guidance for freelancers under Section 44ADA.',
-      icon: '🤝',
-      image: 'https://images.pexels.com/photos/3184463/pexels-photo-3184463.jpeg?auto=compress&cs=tinysrgb&w=600',
-    },
-  ];
 
-  const testimonials = [
-    {
-      quote: 'Mandeep Nain & Associates made my GST registration seamless and stress-free!',
-      author: 'Amit Sharma, Small Business Owner',
-    },
-    {
-      quote: 'Their expertise in income tax filing saved me time and ensured compliance.',
-      author: 'Priya Gupta, Freelancer',
-    },
-  ];
 
   const whyChooseUs = [
     { title: 'Expertise', description: 'Led by Mandeep Kumar, with extensive experience in tax laws.', icon: '🎓' },
@@ -59,51 +29,7 @@ const Home = () => {
   return (
     <main className="bg-[var(--background)] text-[var(--text)] min-h-screen font-['Roboto']">
       {/* Hero Section */}
-      {/* <section className="relative h-screen bg-[url(https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200)] bg-cover bg-center">
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--text)]/20 to-[var(--text)]/80"></div>
-        <div className="relative z-10 backdrop-blur-sm flex h-full items-center justify-center text-center px-4 py-16">
-          <motion.div
-            className="max-w-4xl mx-auto "
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-          >
-            <h1
-              id="hero-title"
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight leading-tight"
-            >
-              Mandeep Nain & Associates
-            </h1>
-            <p className="text-xl sm:text-2xl lg:text-3xl text-white/90 mb-6 font-medium">
-              Simplifying Tax Compliance for Your Business Success
-            </p>
-            <p className="text-lg sm:text-xl text-white/70 mb-8 max-w-xl mx-auto leading-relaxed">
-              Your trusted partner for expert income tax and GST services, delivering precise, timely, and customized solutions.
-            </p>
-            <div className="text-md sm:text-base text-white/80 uppercase tracking-wide mb-8">
-              GSTIN: 06BWBPM7456C1ZM
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a
-                href="#contact"
-                className="bg-[var(--accent)] text-[var(--text)] px-6 py-3 rounded-lg text-lg font-semibold hover:bg-[var(--primary)] transition-colors duration-300 shadow-md"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Contact Us
-              </motion.a>
-              <motion.a
-                href="#contact"
-                className="bg-transparent border-2 border-[var(--accent)] text-[var(--accent)] px-6 py-3 rounded-lg text-lg font-semibold hover:bg-[var(--accent)] hover:text-[var(--text)] transition-colors duration-300 shadow-md"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Book a Consultation
-              </motion.a>
-            </div>
-          </motion.div>
-        </div>
-      </section> */}
+
       <Hero />
 
 
@@ -217,28 +143,6 @@ const Home = () => {
         </div>
       </section>
       {/* Final CTA Section */}
-      {/* <section className="bg-[var(--primary)] py-16 px-6 text-center">
-        <motion.div
-          className="max-w-3xl mx-auto"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl font-bold text-white mb-6">Ready to Simplify Your Tax Compliance?</h2>
-          <p className="text-lg text-white/90 mb-8 leading-relaxed">
-            Contact us today to schedule a consultation and let our experts guide you through income tax and GST solutions tailored for your business.
-          </p>
-          <motion.a
-            href="#contact"
-            className="bg-[var(--accent)] text-white px-8 py-4 rounded-lg text-xl font-semibold hover:bg-[var(--secondary)] transition-colors duration-300 shadow-md hover:shadow-lg"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Get Started Now
-          </motion.a>
-        </motion.div>
-      </section> */}
       <Cta/>
     </main>
   );
