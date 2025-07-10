@@ -1,37 +1,69 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import Testimonials from './Home/Testimonials';
-import Services from './Home/Services';
-import Hero from './Home/Hero';
-import { FaCalculator, FaFileAlt, FaRegQuestionCircle, FaPhone } from 'react-icons/fa';
-import Cta from './Cta';
+import React from "react";
+import { motion } from "framer-motion";
+import Testimonials from "./Home/Testimonials";
+import Services from "./Home/Services";
+import Hero from "./Home/Hero";
+import {
+  FaCalculator,
+  FaFileAlt,
+  FaRegQuestionCircle,
+  FaPhone,
+} from "react-icons/fa";
+import Cta from "./Cta";
+import { Link } from "react-router-dom";
 
 // Fallback image function
-const fallbackImage = 'https://via.placeholder.com/600x400?text=Image+Not+Available';
+const fallbackImage =
+  "https://via.placeholder.com/600x400?text=Image+Not+Available";
 
 const Home = () => {
-
-
   const whyChooseUs = [
-    { title: 'Expertise', description: 'Led by Mandeep Kumar, with extensive experience in tax laws.', icon: '🎓' },
-    { title: 'Tailored Solutions', description: 'Customized strategies to meet your unique business needs.', icon: '🔧' },
-    { title: 'Timely Service', description: 'Prompt and accurate filing to avoid penalties.', icon: '⏰' },
+    {
+      title: "Expertise",
+      description:
+        "Led by Mandeep Kumar, with extensive experience in tax laws.",
+      icon: "🎓",
+    },
+    {
+      title: "Tailored Solutions",
+      description: "Customized strategies to meet your unique business needs.",
+      icon: "🔧",
+    },
+    {
+      title: "Timely Service",
+      description: "Prompt and accurate filing to avoid penalties.",
+      icon: "⏰",
+    },
   ];
 
   const quickLinks = [
-    { label: 'Our Services', href: '/services', icon: <FaFileAlt className="w-6 h-6 mx-auto mb-2" /> },
-    { label: 'GST Compliance', href: '/gst-compliance', icon: <FaCalculator className="w-6 h-6 mx-auto mb-2" /> },
-    { label: 'Calculators', href: '/calculators', icon: <FaCalculator className="w-6 h-6 mx-auto mb-2" /> },
-    { label: 'Contact Us', href: '/contact', icon: <FaPhone className="w-6 h-6 mx-auto mb-2" /> },
+    {
+      label: "Our Services",
+      href: "/services",
+      icon: <FaFileAlt className="w-6 h-6 mx-auto mb-2" />,
+    },
+    {
+      label: "GST Compliance",
+      href: "/gst-compliance",
+      icon: <FaCalculator className="w-6 h-6 mx-auto mb-2" />,
+    },
+    {
+      label: "Calculators",
+      href: "/calculators",
+      icon: <FaCalculator className="w-6 h-6 mx-auto mb-2" />,
+    },
+    {
+      label: "Contact Us",
+      href: "/contact",
+      icon: <FaPhone className="w-6 h-6 mx-auto mb-2" />,
+    },
   ];
-
 
   return (
     <main className="bg-[var(--background)] text-[var(--text)] min-h-screen font-['Roboto']">
       {/* Hero Section */}
 
       <Hero />
-
 
       {/* Why Choose Us Section */}
       <section className="max-w-7xl mx-auto py-16 px-6 bg-[var(--background)]">
@@ -54,9 +86,15 @@ const Home = () => {
               transition={{ delay: index * 0.2, duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="text-4xl mb-4 text-[var(--accent)]">{item.icon}</div>
-              <h3 className="text-xl font-semibold text-[var(--text)] mb-3">{item.title}</h3>
-              <p className="text-base text-[var(--text)]/80 leading-relaxed">{item.description}</p>
+              <div className="text-4xl mb-4 text-[var(--accent)]">
+                {item.icon}
+              </div>
+              <h3 className="text-xl font-semibold text-[var(--text)] mb-3">
+                {item.title}
+              </h3>
+              <p className="text-base text-[var(--text)]/80 leading-relaxed">
+                {item.description}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -80,7 +118,9 @@ const Home = () => {
               src="/about.png"
               alt="Professional tax consultancy team"
               className="w-full h-full"
-              onError={(e) => { e.target.src = fallbackImage; }}
+              onError={(e) => {
+                e.target.src = fallbackImage;
+              }}
             />
           </motion.div>
           <motion.div
@@ -90,12 +130,20 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold text-[var(--text)] mb-6">About Mandeep Nain & Associates</h2>
+            <h2 className="text-3xl font-bold text-[var(--text)] mb-6">
+              About Mandeep Nain & Associates
+            </h2>
             <p className="text-lg text-[var(--text)] mb-4 leading-relaxed">
-              Based in Panchkula, Haryana (SCO-45, Cabin No. 20, Sector-11, 2nd Floor, PIN: 134109), Mandeep Nain & Associates, led by Mandeep Kumar, is a registered GST consultancy (effective 01/01/2024). We specialize in income tax and GST compliance, ensuring your business thrives.
+              Based in Panchkula, Haryana (SCO-45, Cabin No. 20, Sector-11, 2nd
+              Floor, PIN: 134109), Mandeep Nain & Associates, led by Mandeep
+              Kumar, is a registered GST consultancy (effective 01/01/2024). We
+              specialize in income tax and GST compliance, ensuring your
+              business thrives.
             </p>
             <p className="text-base text-[var(--text)]/80 leading-relaxed">
-              Our mission is to deliver accurate and timely tax solutions tailored to your needs, backed by our expertise and commitment to excellence.
+              Our mission is to deliver accurate and timely tax solutions
+              tailored to your needs, backed by our expertise and commitment to
+              excellence.
             </p>
           </motion.div>
         </div>
@@ -127,23 +175,29 @@ const Home = () => {
         </motion.h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {quickLinks.map((link, index) => (
-            <motion.a
+            <motion.div
               key={index}
-              href={link.href}
               className="group bg-white text-gray-900 p-6 rounded-xl text-center font-semibold hover:bg-[var(--secondary)]/50 transition-colors duration-300 shadow-md hover:shadow-xl flex flex-col items-center justify-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <span className="text-[var(--accent)] group-hover:text-[var(--primary)] transition-colors duration-300">{link.icon}</span>
-              <span className="mt-2">{link.label}</span>
-            </motion.a>
+              <Link
+                to={link.href}
+                className="flex flex-col items-center justify-center w-full h-full"
+              >
+                <span className="text-[var(--accent)] group-hover:text-[var(--primary)] transition-colors duration-300">
+                  {link.icon}
+                </span>
+                <span className="mt-2">{link.label}</span>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </section>
       {/* Final CTA Section */}
-      <Cta/>
+      <Cta />
     </main>
   );
 };
